@@ -1,0 +1,11 @@
+h1 {
+  text-align: center;
+}
+
+.flip-image {
+  transform: scaleX(-1);
+}
+
+#arrow {
+  width: 75%;
+}
