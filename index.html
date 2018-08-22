@@ -16,17 +16,18 @@
   </div>
   <div class="container">
     <div class="well row">
-
-      <button type="button" id="roll" name="roll">Roll!</button>
+      <button type="button" id="roll-button" class="roll" name="roll">Roll!</button>
+      <button type="button" id="hold-button">Hold!</button>
       <h3>Die rolled:</h3>
       <p id="temp-roll"></p>
-
     </div>
     <div class="row">
       <div class="col-md-4">
         <h2>Player 1</h2>
         <h3>Points this round: </h3>
+        <div id="running-score-p1"><div id="p1-running-score"></div></div>
         <h3>Points total: </h3>
+        <div id="total-score"><div id="p1-total-score"></div> </div>
       </div>
       <div class="col-md-4">
         <img src="img/leftarrow.png" alt="" id="arrow">
@@ -34,7 +35,9 @@
       <div class="col-md-4">
         <h2>Player 2</h2>
         <h3>Points this round: </h3>
+        <div id="running-score"><div id="p2-running-score"></div></div>
         <h3>Points total: </h3>
+        <div id="total-score"><div id="p2-total-score"></div>
       </div>
     </div>
   </div>
