@@ -11,11 +11,10 @@ function roll() {
 }
 
 //Player Object Constructor
-function Player(name, runningScore, totalScore) {
+function Player(name, runningScore, totalScore, runningScoreDisplay, totalScoreDisplay) {
   this.name = name;
   this.runningScore = runningScore;
   this.totalScore = totalScore;
-  this.currentRoll;
 };
 
 //Players- need input in html for names
@@ -24,6 +23,7 @@ var player2 = new Player("Player 2", 0, 0);
 
 // playerSwitching Turns
 function playerSwitch(){
+    updateScore();
   if (firstPlayer === true){
     firstPlayer = false;
     changeArrow();
@@ -54,8 +54,9 @@ Player.prototype.hold = function(){
   this.totalScore = this.totalScore + this.runningScore;
   playerSwitch();
   this.runningScore = 0;
+  updateScore();
 // Win condition
-  if (this.totalScore >= 10 || this.totalScore >= 10){
+  if (this.totalScore >= 100 || this.totalScore >= 100){
     alert("game over!");
     location.reload();
   }
@@ -65,17 +66,14 @@ Player.prototype.hold = function(){
 //Turn prototype method
 Player.prototype.takeTurn = function(newRoll) {
   if (newRoll === 1) {
-    alert("Bust!");
+    alert("BUST!");
     playerSwitch();
     this.runningScore = 0;
   } else if (newRoll > 1) {
     this.runningScore = this.runningScore + newRoll;
+    updateScore();
   };
 };
-
-
-
-
 
 //FRONT END
 
@@ -84,7 +82,28 @@ $(document).ready(function() {
   //roll button
   $(".roll").click(function() {
     var newRoll = roll();
-    $("#temp-roll").text(newRoll);
+    var rollDisplay;
+    switch (newRoll) {
+      case 1:
+        rollDisplay = "img/Alea_1.png";
+        break;
+      case 2:
+        rollDisplay = "img/Alea_2.png";
+        break;
+      case 3:
+        rollDisplay = "img/Alea_3.png";
+        break;
+      case 4:
+        rollDisplay = "img/Alea_4.png";
+        break;
+      case 5:
+        rollDisplay = "img/Alea_5.png";
+        break;
+      case 6:
+        rollDisplay = "img/Alea_6.png";
+        break;
+      };
+    $("#temp-roll").html("<img src='" + rollDisplay + "'</img>");
     chooser(newRoll);
   });
   //hold button
@@ -93,9 +112,15 @@ $(document).ready(function() {
   });
 });
 
-
-
 // change arrow function
 function changeArrow() {
   $("#arrow").toggleClass("flip-image");
+  $("#temp-roll").text("");
 };
+
+function updateScore(runningScore, totalScore) {
+  $("#p1-running-score").text(player1.runningScore);
+  $("#p2-running-score").text(player2.runningScore);
+  $("#p1-total-score").text(player1.totalScore);
+  $("#p2-total-score").text(player2.totalScore);
+}
