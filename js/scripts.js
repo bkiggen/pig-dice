@@ -1,5 +1,5 @@
 //GLOBAL VARIABLES
-
+firstPlayer = true;
 //BACK END
 
 //dice roll
@@ -21,53 +21,83 @@ function Player(name, runningScore, totalScore) {
 var player1 = new Player("Player 1", 0, 0);
 var player2 = new Player("Player 2", 0, 0);
 
+// playerSwitching Turns
+function playerSwitch(){
+  if (firstPlayer === true){
+    firstPlayer = false;
+    changeArrow();
+  } else if (firstPlayer === false){
+    firstPlayer = true;
+    changeArrow();
+  };
+}
 
-//Turn prototype method
-Player.prototype.takeTurn = function(roll) {
-  console.log('works!');
-  if (roll === 1) {
-    alert("Bust!");
-    //next turn
-  } else if (roll > 1) {
-    this.runningScore += roll;
-    $("#running-score-p1")
-    //HOLD condition
-    console.log(this.runningScore);
+function chooser(newRoll){
+  if (firstPlayer){
+    player1.takeTurn(newRoll);
+  } else if (!firstPlayer){
+    player2.takeTurn(newRoll);
   }
 }
 
 
-// Win condition
-  if (player1.totalScore >= 100 || player2.totalScore >= 100) {
-    alert("game over!");
-    // break;
-    location.reload();
-  }
+
+//Hold function
+Player.prototype.hold = function(){
+  this.totalScore += this.runningScore;
+  console.log(totalScore + "run");
+  console.log(runningScore);
+  playerSwitch();
+}
+
+
+//Turn prototype method
+Player.prototype.takeTurn = function(roll) {
+  console.log(firstPlayer);
+  if (roll === 1) {
+    alert("Bust!");
+    playerSwitch();
+    this.runningScore = 0;
+  } else if (roll > 1) {
+    this.runningScore += roll;
+    //HOLD condition
+    console.log(this.runningScore);
+    //playerSwitch turn
+
+  };
+};
+
+
+// // Win condition
+//   if (player1.totalScore >= 100 || player2.totalScore >= 100) {
+//     alert("game over!");
+//     // break;
+//     location.reload();
+//   }
 
 
 //FRONT END
 
 //user click dice roll (works)
 $(document).ready(function() {
+  //roll button
   $(".roll").click(function() {
     var newRoll = roll();
     $("#temp-roll").text(newRoll);
-    player1.takeTurn(newRoll);
+    chooser(newRoll);
   });
+  //hold button
+  $("#hold-button").click(function(){
+    hold();
+  })
 });
 
 //hold function
-function hold() {
-  $("roll-button").click(function(){
-    //return to loop
-  })
-  $("hold-button").click(function(){
 
-  })
+
   // if roll is pressed: run loop again
   // if hold is pressed: add runningscore to total score, clear running score, update total score, and next turn
 
-}
 
 //enable button
 $(".roll").click(function() {
