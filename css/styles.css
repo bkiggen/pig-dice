@@ -1,8 +1,14 @@
+body {
+  background-color: #FCD7DE;
+}
+
 h1 {
   text-align: center;
 }
 .jumbotron {
   margin-top: 25px;
+  background-color: #f6b1b1;
+  margin: 25px;
 
 }
 .flip-image {
@@ -11,26 +17,49 @@ h1 {
 
 #arrow {
   width: 75%;
+  -webkit-transition-duration: 1s;
 }
 
 .main {
   height: 275px;
 }
 
-#roll-button {
-  width: 85px;
+.btn {
+  width: 120px;
   height: 60px;
-}
+  box-shadow: 0 4px 8px 0 white, 0 -6px 20px 0 white;
+  margin: 5px;
 
-#hold-button {
-  width: 85px;
-  height: 60px;
+
 }
 
 .float-dice {
   float: right;
+  float: left;
 }
 
 .winner {
   display: none;
+}
+
+.pulse {
+  text-shadow: 3px 3px #f6b1b1;
+}
+
+.well {
+  background-image: url(../img/pig.jpg);
+  background-repeat: round;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+#die-rolled {
+  text-shadow: 1px 1px white;
+}
+#roll-button {
+  background-color: lightblue;
+}
+#hold-button {
+  background-color: lightgray;
+
 }

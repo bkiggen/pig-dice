@@ -27,8 +27,10 @@ function playerSwitch(){
   if (firstPlayer === true){
     firstPlayer = false;
     changeArrow();
+    pulse2();
   } else if (firstPlayer === false){
     firstPlayer = true;
+    pulse1();
     changeArrow();
   };
 }
@@ -37,6 +39,8 @@ function chooser(newRoll){
   if (firstPlayer){
     player1.takeTurn(newRoll);
   } else if (!firstPlayer){
+    console.log("player2");
+
     player2.takeTurn(newRoll);
   }
 }
@@ -85,6 +89,7 @@ Player.prototype.takeTurn = function(newRoll) {
 
 //user click dice roll (works)
 $(document).ready(function() {
+  pulse1();
   //roll button
   $("#roll-button").click(function() {
     var newRoll = roll();
@@ -123,7 +128,7 @@ $(document).ready(function() {
 
 // change arrow function
 function changeArrow() {
-  $("#arrow").toggleClass("flip-image");
+  $("#arrow").toggleClass("flip-image", 1000, "easeOutSine");
   $("#temp-roll").text("");
   $("#temp-roll").toggleClass("float-dice");
 };
@@ -138,4 +143,15 @@ function updateScore(runningScore, totalScore) {
 function displayWinner(winner) {
   $("#hooray").html(winner);
   $(".winner").toggleClass("winner");
+  $(".arrow").addClass("winner");
+}
+
+function pulse1(){
+  $("#p2-score").removeClass("pulse");
+  $("#p1-score").addClass("pulse");
+}
+
+function pulse2(){
+  $("#p1-score").removeClass("pulse");
+  $("#p2-score").addClass("pulse");
 }

@@ -15,14 +15,14 @@
     </div>
     <div class="container">
       <div class="well row main">
-        <button type="button" id="roll-button" class="btn btn-success" name="roll">Roll!</button>
-        <button type="button" id="hold-button" class="btn btn-danger">Hold!</button>
-        <h3>Die rolled:</h3>
+        <button type="button" id="roll-button" class="btn " name="roll">Roll!</button>
+        <button type="button" id="hold-button" class="btn ">Pass the Dice!</button>
+        <h3 id="die-rolled">Die rolled:</h3>
         <div id="temp-roll"></div>
       </div>
       <div class="row">
         <div class="col-md-4">
-          <h2>Player 1</h2>
+          <h2 id="p1-score">Player 1</h2>
           <h3>Points this round: <span id="p1-running-score"></span> </h3>
           <h3>Points total: <span id="p1-total-score"></span></h3>
         </div>
@@ -30,14 +30,14 @@
           <img src="img/leftarrow.png" alt="" id="arrow">
         </div>
         <div class="col-md-4">
-          <h2>Player 2</h2>
+          <h2 id="p2-score">Player 2</h2>
           <h3>Points this round: <span id="p2-running-score"></span></h3>
           <h3>Points total: <span id="p2-total-score"></span></h3>
         </div>
       </div>
       <div class="well winner">
         <h1>The winner is <span id="hooray"></span></h1>
-        <button type="button" id="reload-button">New Game!</button>
+        <button type="button" id="reload-button" class="btn btn-warning">New Game!</button>
       </div>
     </div>
 
