@@ -1,7 +1,10 @@
 h1 {
   text-align: center;
 }
+.jumbotron {
+  margin-top: 25px;
 
+}
 .flip-image {
   transform: scaleX(-1);
 }
@@ -10,10 +13,24 @@ h1 {
   width: 75%;
 }
 
-.show-bust {
-  display: block;
+.main {
+  height: 275px;
 }
 
-.bust {
+#roll-button {
+  width: 85px;
+  height: 60px;
+}
+
+#hold-button {
+  width: 85px;
+  height: 60px;
+}
+
+.float-dice {
+  float: right;
+}
+
+.winner {
   display: none;
 }

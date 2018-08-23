@@ -56,9 +56,15 @@ Player.prototype.hold = function(){
   this.runningScore = 0;
   updateScore();
 // Win condition
+  var winner = "";
+
   if (this.totalScore >= 100 || this.totalScore >= 100){
-    alert("game over!");
-    location.reload();
+    if (player1.totalScore >= 100) {
+    winner = "Player 1!";
+  } else if (player2.totalScore >= 100) {
+    winner = "player 2!";
+  }
+  displayWinner(winner);
   }
 }
 
@@ -80,7 +86,7 @@ Player.prototype.takeTurn = function(newRoll) {
 //user click dice roll (works)
 $(document).ready(function() {
   //roll button
-  $(".roll").click(function() {
+  $("#roll-button").click(function() {
     var newRoll = roll();
     var rollDisplay;
     switch (newRoll) {
@@ -110,12 +116,16 @@ $(document).ready(function() {
   $("#hold-button").click(function(){
     holdChooser();
   });
+  $("#reload-button").click(function(){
+    location.reload();
+  })
 });
 
 // change arrow function
 function changeArrow() {
   $("#arrow").toggleClass("flip-image");
   $("#temp-roll").text("");
+  $("#temp-roll").toggleClass("float-dice");
 };
 
 function updateScore(runningScore, totalScore) {
@@ -123,4 +133,9 @@ function updateScore(runningScore, totalScore) {
   $("#p2-running-score").text(player2.runningScore);
   $("#p1-total-score").text(player1.totalScore);
   $("#p2-total-score").text(player2.totalScore);
+}
+
+function displayWinner(winner) {
+  $("#hooray").html(winner);
+  $(".winner").toggleClass("winner");
 }
