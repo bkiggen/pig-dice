@@ -5,10 +5,12 @@ body {
 h1 {
   text-align: center;
 }
+
 .jumbotron {
   margin-top: 25px;
   background-color: #f6b1b1;
   margin: 25px;
+  border-radius: 5px;
 
 }
 .flip-image {
@@ -29,13 +31,21 @@ h1 {
   height: 60px;
   box-shadow: 0 4px 8px 0 white, 0 -6px 20px 0 white;
   margin: 5px;
+}
 
-
+.temp-roll{
+  float: left;
+}
+.temp-roll img {
+  height: 200px;
 }
 
 .float-dice {
   float: right;
-  float: left;
+}
+
+.float-dice img {
+  height: 200px;
 }
 
 .winner {
@@ -56,10 +66,24 @@ h1 {
 #die-rolled {
   text-shadow: 1px 1px white;
 }
+
 #roll-button {
   background-color: lightblue;
 }
+
 #hold-button {
   background-color: lightgray;
+}
 
+.user-prompt {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  height:350px;
+  width: 90%;
+  background-color: #D04E56;
+  border-radius: 5px;
+  z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding:20px;
 }

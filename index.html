@@ -13,16 +13,38 @@
     <div class="jumbotron">
       <h1>Pig Dice!</h1>
     </div>
+
+    <div class="user-prompt">
+      <form class="nameform">
+        <div class="">
+          <label for="player-name-1">Please enter player 1's name:</label>
+          <input type="text" id="player-name-1" placeholder="John Doe" required>
+        </div>
+        <div class="p2name">
+          <label for="player-name-2">Please enter player 2's name:</label>
+          <input type="text" id="player-name-2"  placeholder="Jane Doe" required>
+          <input type="radio" id="computer"
+          name="opponent" value="computer">
+          <label for="computer">Computer</label>
+          <input type="radio" id="human"
+          name="opponent" value="human" required>
+          <label for="human">Human</label>
+        </div>
+        <button type="submit" name="button">Start Game!</button>
+      </form>
+    </div>
+
     <div class="container">
+      <button type="button" id="roll-button" class="btn " name="roll">Roll!</button>
+      <button type="button" id="hold-button" class="btn ">Pass the Dice!</button>
+      <h3 id="die-rolled">Die rolled:</h3>
       <div class="well row main">
-        <button type="button" id="roll-button" class="btn " name="roll">Roll!</button>
-        <button type="button" id="hold-button" class="btn ">Pass the Dice!</button>
-        <h3 id="die-rolled">Die rolled:</h3>
-        <div id="temp-roll"></div>
+
+        <div id="temp-roll" class="temp-roll"></div>
       </div>
       <div class="row">
         <div class="col-md-4">
-          <h2 id="p1-score">Player 1</h2>
+          <h2 id="p1-score">Player 1: <span id="name-span1"></span></h2>
           <h3>Points this round: <span id="p1-running-score"></span> </h3>
           <h3>Points total: <span id="p1-total-score"></span></h3>
         </div>
@@ -30,7 +52,7 @@
           <img src="img/leftarrow.png" alt="" id="arrow">
         </div>
         <div class="col-md-4">
-          <h2 id="p2-score">Player 2</h2>
+          <h2 id="p2-score">Player 2: <span id="name-span2"></span></h2>
           <h3>Points this round: <span id="p2-running-score"></span></h3>
           <h3>Points total: <span id="p2-total-score"></span></h3>
         </div>

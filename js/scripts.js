@@ -89,7 +89,23 @@ Player.prototype.takeTurn = function(newRoll) {
 
 //user click dice roll (works)
 $(document).ready(function() {
+  var player1Name = "";
+  var player2Name = "";
+  var opponentType = "";
   pulse1();
+
+  $(".nameform").submit(function(event){
+    event.preventDefault();
+    player1Name = $('#player-name-1').val();
+    console.log(player1Name);
+    player2Name = $('#player-name-2').val();
+    opponentType = $(".p2name input[name='opponent']:checked").val();
+    $(".user-prompt").fadeOut(1500, "linear");
+    $("#name-span1").text(player1Name);
+    $("#name-span2").text(player2Name);
+  });
+
+
   //roll button
   $("#roll-button").click(function() {
     var newRoll = roll();
@@ -131,6 +147,7 @@ function changeArrow() {
   $("#arrow").toggleClass("flip-image", 1000, "easeOutSine");
   $("#temp-roll").text("");
   $("#temp-roll").toggleClass("float-dice");
+  $("#temp-roll").toggleClass("temp-roll");
 };
 
 function updateScore(runningScore, totalScore) {
