@@ -4,6 +4,7 @@ firstPlayer = true;
 
 //dice roll
 function roll() {
+//actual roll
   min = Math.ceil(1);
   max = Math.floor(6);
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -40,40 +41,40 @@ function chooser(newRoll){
   }
 }
 
-
+function holdChooser(){
+  if (firstPlayer){
+    player1.hold();
+  } else if (!firstPlayer){
+    player2.hold();
+  }
+}
 
 //Hold function
 Player.prototype.hold = function(){
-  this.totalScore += this.runningScore;
-  console.log(totalScore + "run");
-  console.log(runningScore);
+  this.totalScore = this.totalScore + this.runningScore;
   playerSwitch();
+  this.runningScore = 0;
+// Win condition
+  if (this.totalScore >= 10 || this.totalScore >= 10){
+    alert("game over!");
+    location.reload();
+  }
 }
 
 
 //Turn prototype method
-Player.prototype.takeTurn = function(roll) {
-  console.log(firstPlayer);
-  if (roll === 1) {
+Player.prototype.takeTurn = function(newRoll) {
+  if (newRoll === 1) {
     alert("Bust!");
     playerSwitch();
     this.runningScore = 0;
-  } else if (roll > 1) {
-    this.runningScore += roll;
-    //HOLD condition
-    console.log(this.runningScore);
-    //playerSwitch turn
-
+  } else if (newRoll > 1) {
+    this.runningScore = this.runningScore + newRoll;
   };
 };
 
 
-// // Win condition
-//   if (player1.totalScore >= 100 || player2.totalScore >= 100) {
-//     alert("game over!");
-//     // break;
-//     location.reload();
-//   }
+
 
 
 //FRONT END
@@ -88,26 +89,10 @@ $(document).ready(function() {
   });
   //hold button
   $("#hold-button").click(function(){
-    hold();
-  })
+    holdChooser();
+  });
 });
 
-//hold function
-
-
-  // if roll is pressed: run loop again
-  // if hold is pressed: add runningscore to total score, clear running score, update total score, and next turn
-
-
-//enable button
-$(".roll").click(function() {
-  player1.turn();
-});
-
-//hold button
-$("#hold-button").click(function() {
-  break turnloop;
-});
 
 
 // change arrow function
