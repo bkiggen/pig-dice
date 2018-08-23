@@ -1,5 +1,5 @@
 //GLOBAL VARIABLES
-firstPlayer = true;
+var firstPlayer = true;
 //BACK END
 
 //dice roll
@@ -11,7 +11,7 @@ function roll() {
 }
 
 //Player Object Constructor
-function Player(name, runningScore, totalScore, runningScoreDisplay, totalScoreDisplay) {
+function Player(name, runningScore, totalScore) {
   this.name = name;
   this.runningScore = runningScore;
   this.totalScore = totalScore;
